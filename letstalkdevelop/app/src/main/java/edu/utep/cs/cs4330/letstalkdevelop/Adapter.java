@@ -22,11 +22,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private LayoutInflater layoutInflater;
     private List<String> data;
     private List<Integer> imag;
+    private List<String> desc;
+    private List<Double> price;
 
-    Adapter(Context context, ArrayList<String> data, ArrayList<Integer> imag) {
+    Adapter(Context context, ArrayList<String> data, ArrayList<Integer> imag, ArrayList<String> desc, ArrayList<Double> prices) {
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
         this.imag = imag;
+        this.desc = desc;
+        this.price = prices;
     }
 
 
@@ -45,6 +49,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.textTitle.setText(title);
         //Similarly you can set new image/description for each card
         holder.imageView.setImageResource(imag.get(position));
+        //Description set
+        String description = desc.get(position);
+        holder.textDescription.setText(description);
+        //Prices set
+        String Stringprices = price.get(position).toString();
+        holder.textPrices.setText(Stringprices);
     }
 
     @Override
@@ -54,8 +64,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView textTitle,textDescription;
+        TextView textTitle;
+        TextView textDescription;
         ImageView imageView;
+        TextView textPrices;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,12 +81,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
                     i.putExtra("image", imag.get(getAdapterPosition()));
                     i.putExtra("title",data.get(getAdapterPosition())); // Sending title of the CardView
+                    i.putExtra("description", desc.get(getAdapterPosition()));
+                    i.putExtra("prices", price.get(getAdapterPosition()));
                     view.getContext().startActivity(i); // Starting next activity from view "v"
                 }
             });
 
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDesc);
+            textPrices = itemView.findViewById(R.id.textPrice);
             imageView = itemView.findViewById(R.id.imageView);
 
         }

@@ -20,11 +20,16 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> items;
     Adapter adapter;
     ArrayList<Integer> templateImages;
+    ArrayList<String> description;
+    ArrayList<Double> prices;
+    private SessionHandler session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        session = new SessionHandler(getApplicationContext());
+        User user = session.getUserDetails();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
@@ -42,9 +47,24 @@ public class MainActivity extends AppCompatActivity {
         templateImages.add(R.drawable.website4);
         templateImages.add(R.drawable.website5);
 
+        description = new ArrayList<>();
+        description.add("Breath-taking template delivers an open-space layout perfect for business.");
+        description.add("2Breath-taking template delivers an open-space layout perfect for business.");
+        description.add("3Breath-taking template delivers an open-space layout perfect for business.");
+        description.add("4Breath-taking template delivers an open-space layout perfect for business.");
+        description.add("5Breath-taking template delivers an open-space layout perfect for business.");
+
+        prices = new ArrayList<>();
+        prices.add(99.99);
+        prices.add(69.99);
+        prices.add(59.99);
+        prices.add(85.99);
+        prices.add(75.99);
+
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this, items, templateImages);//setting the adapter for the items(names)
+        adapter = new Adapter(this, items, templateImages, description, prices);//setting the adapter for the items(names)
         recyclerView.setAdapter(adapter);
 
     }
@@ -60,14 +80,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.loginMenu:
-                Intent loginActivity = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(loginActivity);
-                finish();
+            case R.id.shoppingCartMenu:
                 return true;
-            case R.id.registerMenu:
-                Intent registerActivity = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(registerActivity);
+            case R.id.logoutMenu:
+                session.logoutUser();
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
                 finish();
                 return true;
             default:
