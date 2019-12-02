@@ -81,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.shoppingCartMenu:
+                Intent cartIntent = new Intent(this, ShoppingCart.class);
+                startActivity(cartIntent);
+                finish();
                 return true;
             case R.id.logoutMenu:
                 session.logoutUser();

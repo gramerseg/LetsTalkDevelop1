@@ -29,15 +29,26 @@ public class ShoppingCart extends AppCompatActivity {
 
 
         Intent i = getIntent();
+        if (i.getStringExtra("title")== null) {
+           return;
 
-        item.add(i.getStringExtra("title"));
-        //Image
-        Bundle b = getIntent().getExtras();
-        int imag = b.getInt("image");
-        //Description
-        String description = i.getStringExtra("description");
+        }
+        else {
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, item);
-        shoppingCart.setAdapter(arrayAdapter);
+            item.add(i.getStringExtra("title"));
+
+            //Image
+            Bundle b = getIntent().getExtras();
+            int imag = b.getInt("image");
+
+            //Description
+            String description = i.getStringExtra("description");
+
+            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, item);
+            shoppingCart.setAdapter(arrayAdapter);
+
+        }
+
+
     }
 }
