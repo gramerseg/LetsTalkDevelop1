@@ -34,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         items = new ArrayList<>();
-        items.add("Biennale Template");
+        items.add("Bienn Template");
         items.add("Nirvana Template");
         items.add("Modern Template");
-        items.add("Traditional Template");
+        items.add("Trad Template");
         items.add("Ivana Template");
 
         templateImages = new ArrayList<>();
@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
         description = new ArrayList<>();
         description.add("Breath-taking template delivers an open-space layout perfect for business.");
-        description.add("2Breath-taking template delivers an open-space layout perfect for business.");
-        description.add("3Breath-taking template delivers an open-space layout perfect for business.");
-        description.add("4Breath-taking template delivers an open-space layout perfect for business.");
-        description.add("5Breath-taking template delivers an open-space layout perfect for business.");
+        description.add("Open-space layout invites people to spend hours at your website.");
+        description.add("This modern view of a website specifically for e-commerce.");
+        description.add("Nothing like your traditional single landing page for a business.");
+        description.add("More of a portfolio rather than for business. Invites users to learn.");
 
         prices = new ArrayList<>();
         prices.add(99.99);
