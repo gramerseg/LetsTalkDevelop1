@@ -16,7 +16,6 @@ public class ShoppingCart extends AppCompatActivity {
     ArrayList<Double> price;
     ListView shoppingCart;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +26,11 @@ public class ShoppingCart extends AppCompatActivity {
         description = new ArrayList<>();
         price = new ArrayList<>();
 
-
         Intent i = getIntent();
         if (i.getStringExtra("title")== null) {
            return;
-
         }
         else {
-
             item.add(i.getStringExtra("title"));
 
             //Image
@@ -43,12 +39,8 @@ public class ShoppingCart extends AppCompatActivity {
 
             //Description
             String description = i.getStringExtra("description");
-
             ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, item);
             shoppingCart.setAdapter(arrayAdapter);
-
         }
-
-
     }
 }
