@@ -16,9 +16,7 @@
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
 
-        <activity android:name=".ShoppingCartAdapter" />
         <activity android:name=".ShoppingCart" />
-        <activity android:name=".LandingPage" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
