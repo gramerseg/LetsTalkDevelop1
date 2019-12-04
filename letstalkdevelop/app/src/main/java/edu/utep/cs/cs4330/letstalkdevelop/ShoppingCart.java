@@ -4,51 +4,36 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class ShoppingCart extends AppCompatActivity {
-    ArrayList<String> item;
-    ArrayList<Integer> image;
-    ArrayList<String> description;
-    ArrayList<Double> price;
-    ListView shoppingCart;
+    private Button buyButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
-        shoppingCart = (ListView) findViewById(R.id.shoppingCart);
-        item = new ArrayList<>();
-        image = new ArrayList<>();
-        description = new ArrayList<>();
-        price = new ArrayList<>();
 
-
-        Intent i = getIntent();
-        if (i.getStringExtra("title")== null) {
-           return;
-
-        }
-        else {
-
-            item.add(i.getStringExtra("title"));
-
-            //Image
-            Bundle b = getIntent().getExtras();
-            int imag = b.getInt("image");
-
-            //Description
-            String description = i.getStringExtra("description");
-
-            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, item);
-            shoppingCart.setAdapter(arrayAdapter);
-
-        }
-
-
+        buyButton = (Button) findViewById(R.id.buy_button);
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
     }
+
+    public void openDialog() {
+        ShoppingDialog shoppingDialog = new ShoppingDialog();
+        shoppingDialog.show(getSupportFragmentManager(),"example dialog");
+    }
+
+    
+
 }
